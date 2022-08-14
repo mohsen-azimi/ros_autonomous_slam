@@ -16,15 +16,18 @@ This consist of a ROS package which uses the Navigation Stack to autonomously ex
 Set your environment variable to the model robot to be used.
 ```
 export TURTLEBOT3_MODEL=waffle_pi
-source ~/.bashrc
 ```
 Execute the given launch to open Gazebo with the given world file and place the robot Turtlebot3 Waffle pi model in it.
 ```
+export TURTLEBOT3_MODEL=waffle_pi
+source devel/setup.bash
 roslaunch ros_autonomous_slam turtlebot3_world.launch
 ```
 Keep this process running always and execute other commands in a different terminal.
 ## Step 2 : Perform Autonomous exploration of the environment and generate the Map
 ```
+export TURTLEBOT3_MODEL=waffle_pi
+source devel/setup.bash
 roslaunch ros_autonomous_slam autonomous_explorer.launch 
 ```
 Run the Autonomous Explorer launch file which executes two tasks for us at the same time.
@@ -40,6 +43,8 @@ The RRT exploration requires a rectangular region around to be defined in the RV
 
 **Once you are satisfied with the constructed map, Save the map.**
 ```
+export TURTLEBOT3_MODEL=waffle_pi
+source devel/setup.bash
 rosrun map_server map_saver -f my_map
 ```
 The **my_map.pgm** and **my_map.yaml** gets saved in your worspace directory. Move these to files to the package's **maps** folder (catkin_ws\src\ros_autonomous_slam\maps).**Now your new map which is basically a occupancy grid is constructed !** <br />
@@ -57,7 +62,7 @@ roslaunch ros_autonomous_slam turtlebot3_navigation.launch
 ```
 The RVIZ Window shows the robot's local map construction using its Laser sensors with respect to the Global Map previously constructed in Step 2 with help of a cost map.
 ### Setting Goal in the RVIZ Window
-- Firs estimate the initial Pose i.e locating the real robot location with respect to the Map. This can be set in the RVIZ window itself using the **2D Pose Estimate** and pointing and dragging the arrow in the current robot's locaion and orientation.<br />
+- First estimate the initial Pose i.e locating the real robot location with respect to the Map. This can be set in the RVIZ window itself using the **2D Pose Estimate** and pointing and dragging the arrow in the current robot's locaion and orientation.<br />
 ![Nav](media/2d_pose_button.png)
 - An GOAL point can be set in the RVIZ window itself using the **2D Nav Goal** option which will be available in the top window tab.This allows you to set a goal point in the map within the RVIZ environment, then the robot automaticals performs the path palnning and starts to move in its path.<br />
 ![Nav](media/2d_nav_goal_button.png)
@@ -119,5 +124,4 @@ cd ..
 catkin_make
 source /devel/setup.bash
 ```
-
 
