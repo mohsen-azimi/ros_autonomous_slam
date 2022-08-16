@@ -19,7 +19,7 @@ export TURTLEBOT3_MODEL=waffle_pi
 ```
 Execute the given launch to open Gazebo with the given world file and place the robot Turtlebot3 Waffle pi model in it.
 ```
-export TURTLEBOT3_MODEL=waffle_pi
+export TURTLEBOT3_MODEL=waffle_pi #burger, waffle, waffle_pi
 source devel/setup.bash
 roslaunch ros_autonomous_slam turtlebot3_world.launch
 ```
@@ -51,7 +51,10 @@ The **my_map.pgm** and **my_map.yaml** gets saved in your worspace directory. Mo
 ![Gmapping](media/my_map.png)
 <br />
 **Incase of Autonomous Fail** you can manually controll the robot in the environment using the key board with the seperate launch execution given below. You can also manually explore and construct the map like a game.
+
 ```
+export TURTLEBOT3_MODEL=waffle
+source devel/setup.bash
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 ![Manual Gmapping](media/gmapping2.gif)
